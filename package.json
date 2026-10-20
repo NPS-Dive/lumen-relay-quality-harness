@@ -1,0 +1,21 @@
+{
+  "name": "lumen-relay-quality-harness",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quality harness for Lumen Relay, a fictional local messenger. Contract, negative, and small load checks for identity, directory, device material, and profile, with architecture records and an evidence pack.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "mock": "node mock/src/server.mjs",
+    "check:types": "tsc --noEmit",
+    "check:node": "node --test mock/src/app.test.mjs mock/src/server.test.mjs platform/guard.test.mjs platform/evidence.test.mjs platform/report.test.mjs platform/run-all.test.mjs",
+    "check": "node platform/run-all.mjs",
+    "check:all": "npm run check:types && npm run check:node && npm run check"
+  },
+  "devDependencies": {
+    "@types/k6": "^1.6.0",
+    "typescript": "^5.9.3"
+  }
+}
