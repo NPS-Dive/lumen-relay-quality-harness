@@ -17,9 +17,9 @@ docs/architecture/
 
 ```mermaid
 graph LR
-  context[C4Context] --> container[C4Container]
-  container --> component[C4Component]
-  component --> flows[SuiteSequences]
+  context[Context] --> container[Container]
+  container --> component[Component]
+  component --> flows[Sequences]
 ```
 
 Read the context first. It is intentionally small: one person and one system. The container diagram is where the runner, the mock, k6, and the evidence files appear.

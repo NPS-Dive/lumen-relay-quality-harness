@@ -17,9 +17,9 @@ docs/architecture/
 
 ```mermaid
 graph LR
-  context[C4Context] --> container[C4Container]
-  container --> component[C4Component]
-  component --> flows[SuiteSequences]
+  context[Context] --> container[Container]
+  container --> component[Component]
+  component --> flows[Sequences]
 ```
 
 ## Identity
