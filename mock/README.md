@@ -20,8 +20,8 @@ mock/
 ## Workflow
 
 ```mermaid
-flowchart LR
-  entry[server.mjs] --> bind[Bind127_0_0_1]
+graph LR
+  entry["server entry"] --> bind["bind loopback"]
   bind --> router[RouteTable]
   router --> desk[SessionDesk]
   router --> directory[Directory]

@@ -20,8 +20,8 @@ platform/
 ## Workflow
 
 ```mermaid
-flowchart LR
-  cli[run_all.mjs] --> guard[assertLoopback]
+graph LR
+  cli["run all"] --> guard[assertLoopback]
   guard --> mock[StartMock]
   mock --> ready[GET_ready]
   ready --> k6[k6_run]

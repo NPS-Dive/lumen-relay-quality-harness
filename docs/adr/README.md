@@ -19,7 +19,7 @@ docs/adr/
 ## Workflow
 
 ```mermaid
-flowchart LR
+graph LR
   context[Context] --> decision[Decision]
   decision --> alternatives[Alternatives]
   alternatives --> consequences[Consequences]

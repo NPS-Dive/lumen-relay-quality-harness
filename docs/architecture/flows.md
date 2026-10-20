@@ -16,7 +16,7 @@ docs/architecture/
 ## How this folder is read
 
 ```mermaid
-flowchart LR
+graph LR
   context[C4Context] --> container[C4Container]
   container --> component[C4Component]
   component --> flows[SuiteSequences]
@@ -89,7 +89,7 @@ sequenceDiagram
   Mock-->>Ada: 403 not a peer
   Ada->>Mock: POST /relay/v1/peers
   Ada->>Mock: GET /relay/v1/cards/mem_bao
-  Mock-->>Ada: 200 Bao's card
+  Mock-->>Ada: 200 Bao card
   Ada->>Mock: PUT /relay/v1/preferences
   Mock-->>Ada: 200 replaced preferences
 ```

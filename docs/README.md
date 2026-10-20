@@ -16,8 +16,8 @@ docs/
 ## Workflow
 
 ```mermaid
-flowchart LR
-  about[github_about.md] --> adr[DecisionLog]
+graph LR
+  about["github about"] --> adr[DecisionLog]
   adr --> c4[C4Diagrams]
   c4 --> flows[SequenceFlows]
   flows --> sample[SampleSummary]

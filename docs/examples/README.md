@@ -13,10 +13,10 @@ docs/examples/
 ## Workflow
 
 ```mermaid
-flowchart LR
+graph LR
   rows[FixtureRows] --> renderer[renderSummary]
-  renderer --> sample[sample_summary.md]
-  renderer --> live[results_runId_summary.md]
+  renderer --> sample["sample summary"]
+  renderer --> live["live summary"]
 ```
 
 `platform/report.test.mjs` fails if the renderer and the sample drift apart.

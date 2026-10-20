@@ -53,7 +53,7 @@ npm run check
 ## Workflow
 
 ```mermaid
-flowchart LR
+graph LR
   reviewer[Reviewer] --> check[npm_run_check]
   check --> guard[LoopbackGuard]
   guard --> mock[LoopbackMock]

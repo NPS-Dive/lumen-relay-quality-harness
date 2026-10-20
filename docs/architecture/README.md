@@ -1,6 +1,6 @@
 # Architecture
 
-C4 diagrams for the harness, plus one sequence flow for each suite. The system under test is the loopback mock. There is no external messenger.
+C4 views of the harness, plus one sequence flow for each suite. GitHub draws these as flowcharts and sequence diagrams. The system under test is the loopback mock. There is no external messenger.
 
 ## Layout
 
@@ -16,7 +16,7 @@ docs/architecture/
 ## Workflow
 
 ```mermaid
-flowchart LR
+graph LR
   context[C4Context] --> container[C4Container]
   container --> component[C4Component]
   component --> flows[SuiteSequences]

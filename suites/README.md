@@ -17,8 +17,8 @@ suites/
 ## Workflow
 
 ```mermaid
-flowchart LR
-  shared[shared_relay.ts] --> identity[Identity]
+graph LR
+  shared["shared relay"] --> identity[Identity]
   shared --> directory[Directory]
   shared --> material[DeviceMaterial]
   shared --> profile[Profile]

@@ -16,27 +16,26 @@ docs/architecture/
 ## How this folder is read
 
 ```mermaid
-flowchart LR
+graph LR
   context[C4Context] --> container[C4Container]
   container --> component[C4Component]
   component --> flows[SuiteSequences]
 ```
 
 ```mermaid
-C4Container
-title Containers in the Lumen Relay quality harness
-Person(reviewer, "Hiring reviewer", "Evaluates the author by reading and running the harness.")
-System_Boundary(repo, "lumen-relay-quality-harness") {
-  Container(runner, "Platform runner", "Node.js", "Refuses non-loopback URLs, starts the mock, invokes k6, writes the summary.")
-  Container(mock, "Loopback mock", "Node.js HTTP", "In-memory /relay/v1 API bound to 127.0.0.1.")
-  Container(suites, "k6 suites", "TypeScript", "Identity, directory, device material, and profile.")
-  ContainerDb(evidence, "Evidence pack", "CSV and Markdown", "results/run-id for a single invocation.")
-}
-Rel(reviewer, runner, "npm run check")
-Rel(runner, mock, "Starts and polls /relay/v1/ready")
-Rel(runner, suites, "k6 run, one file at a time")
-Rel(suites, mock, "HTTP on loopback")
-Rel(runner, evidence, "Writes evidence.csv and summary.md")
+graph TB
+  reviewer["Hiring reviewer"]
+  subgraph repo [Quality harness]
+    runner["Platform runner"]
+    mock["Loopback mock"]
+    suites["k6 suites"]
+    evidence["Evidence pack"]
+  end
+  reviewer --> runner
+  runner -->|"starts the mock"| mock
+  runner -->|"runs one file at a time"| suites
+  suites -->|"calls loopback HTTP"| mock
+  runner -->|"writes the summary"| evidence
 ```
 
 Components inside the mock and the runner are in [c4-component.md](c4-component.md).

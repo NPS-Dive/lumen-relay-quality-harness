@@ -16,33 +16,32 @@ docs/architecture/
 ## How this folder is read
 
 ```mermaid
-flowchart LR
+graph LR
   context[C4Context] --> container[C4Container]
   container --> component[C4Component]
   component --> flows[SuiteSequences]
 ```
 
 ```mermaid
-C4Component
-title Components of the mock and the runner
-Container_Boundary(mock, "Loopback mock") {
-  Component(router, "Router", "Node.js", "Matches method and path, reads JSON, returns the error catalog.")
-  Component(desk, "Session desk", "Node.js", "Issues a single-use desk code and rotates bearer tokens.")
-  Component(book, "Directory", "Node.js", "Mutual peers and blocks.")
-  Component(shelf, "Device material", "Node.js", "Publish once, then rotate.")
-  Component(cards, "Profile", "Node.js", "Cards and notification preferences.")
-}
-Container_Boundary(platform, "Platform runner") {
-  Component(guard, "Loopback guard", "Node.js", "Allowlists 127.0.0.1 and localhost.")
-  Component(writer, "Evidence writer", "Node.js", "Parses LUMEN_EVIDENCE lines into CSV.")
-  Component(report, "Summary writer", "Node.js", "Renders the English run summary.")
-}
-Rel(router, desk, "Access routes")
-Rel(router, book, "Peer routes")
-Rel(router, shelf, "Material routes")
-Rel(router, cards, "Card and preference routes")
-Rel(guard, writer, "Only after the origin is accepted")
-Rel(writer, report, "Rows in, summary out")
+graph TB
+  subgraph mockBox [Loopback mock]
+    router[Router]
+    desk["Session desk"]
+    book[Directory]
+    shelf["Device material"]
+    cards[Profile]
+  end
+  subgraph platformBox [Platform runner]
+    guard["Loopback guard"]
+    writer["Evidence writer"]
+    report["Summary writer"]
+  end
+  router --> desk
+  router --> book
+  router --> shelf
+  router --> cards
+  guard --> writer
+  writer --> report
 ```
 
 Suite sequences are in [flows.md](flows.md).

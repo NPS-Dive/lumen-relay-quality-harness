@@ -13,7 +13,7 @@ suites/shared/
 ## Workflow
 
 ```mermaid
-flowchart LR
+graph LR
   suite[SuiteScript] --> origin[AssertLoopbackOrigin]
   suite --> http[requestJson]
   http --> mock[LoopbackMock]
